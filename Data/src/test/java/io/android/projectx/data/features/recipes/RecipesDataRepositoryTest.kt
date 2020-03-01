@@ -95,12 +95,12 @@ class RecipesDataRepositoryTest {
     }
 
     fun stubBookmarkRecipe(completable: Completable) {
-        whenever(store.setRecipeAsBookmarked(any()))
+        whenever(cache.setRecipeAsBookmarked(any()))
             .thenReturn(completable)
     }
 
     fun stubUnBookmarkRecipe(completable: Completable) {
-        whenever(store.setRecipeAsNotBookmarked(any()))
+        whenever(cache.setRecipeAsNotBookmarked(any()))
             .thenReturn(completable)
     }
 
@@ -125,7 +125,7 @@ class RecipesDataRepositoryTest {
     }
 
     private fun stubGetBookmarkedRecipes(flowable: Flowable<List<RecipeEntity>>) {
-        whenever(store.getBookmarkedRecipes())
+        whenever(cache.getBookmarkedRecipes())
             .thenReturn(flowable)
     }
 
@@ -136,11 +136,11 @@ class RecipesDataRepositoryTest {
 
     private fun stubFactoryGetCacheDataStore() {
         whenever(factory.getCacheDataStore())
-            .thenReturn(store)
+            .thenReturn(cache)
     }
 
     private fun stubSaveRecipes(completable: Completable) {
-        whenever(store.saveRecipes(any()))
+        whenever(cache.saveRecipes(any()))
             .thenReturn(completable)
     }
 
