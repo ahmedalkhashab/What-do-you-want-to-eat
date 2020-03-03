@@ -7,8 +7,10 @@ import dagger.Provides
 import io.android.projectx.cache.features.recipes.RecipesCacheImpl
 import io.android.projectx.cache.AppDatabase
 import io.android.projectx.cache.features.restaurants.RestaurantsCacheImpl
+import io.android.projectx.cache.usermanagment.UserManagementCacheImpl
 import io.android.projectx.data.features.recipes.repository.RecipesCache
 import io.android.projectx.data.features.restaurants.repository.RestaurantsCache
+import io.android.projectx.data.features.usermanagement.repository.UserManagementCache
 
 @Module
 abstract class CacheModule {
@@ -21,6 +23,9 @@ abstract class CacheModule {
             return AppDatabase.getInstance(application)
         }
     }
+
+    @Binds
+    abstract fun bindUserManagementCache(userManagementCacheImpl: UserManagementCacheImpl): UserManagementCache
 
     @Binds
     abstract fun bindRecipesCache(recipesCache: RecipesCacheImpl): RecipesCache
